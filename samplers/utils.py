@@ -1,7 +1,6 @@
 # Import libraries
 import numpy as np
 
-
 # Define AA single letter library
 AA_single_letter = [ 'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']
 
@@ -25,16 +24,3 @@ def mutate(seq):
 def dummy_alanine_preference(seq):
     """ Dummy model to for alanine preference design."""
     return seq.count("A")
-
-
-def hill_climb(seq, model, iter):
-    """ Hill Climb for sequence exploration."""
-    current_seq = seq
-    current_state = model(current_seq)
-    for i in range(iter):
-        neighbour_seq = mutate(current_seq)
-        neighbour_state = model(neighbour_seq)
-        if neighbour_state > current_state:
-            current_seq = neighbour_seq
-            current_state = model(current_seq)
-    return current_seq
